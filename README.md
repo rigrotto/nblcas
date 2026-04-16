@@ -125,6 +125,8 @@ static-site/
 
 [MIT](LICENSE) © 2026 rigrotto
 
+Please do not deploy or redistribute this project as a competing service. Thank you!
+
 ---
 
 ## Disclaimer:
