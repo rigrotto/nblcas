@@ -10,7 +10,7 @@
 ![EXPORT CSV](https://img.shields.io/badge/Contract%20Page%20Export-CSV%20File-green)
 ![Vanilla JS](https://img.shields.io/badge/Vanilla%20JS-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Last Commit](https://img.shields.io/badge/Last%20Commit-April%202026-blue)
-![Release](https://img.shields.io/badge/Release-v1.6.2-brightgreen)
+[![Release](https://img.shields.io/badge/Release-v1.0-brightgreen)]
 
 ---
 
