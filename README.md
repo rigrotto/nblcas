@@ -125,7 +125,7 @@ static-site/
 
 [MIT](LICENSE) © 2026 rigrotto
 
-TL;DR = You have permission to use, modify, and distribute this code, however I ask if you don't distribute this code, but absolutely use it for yourself. Thank you, I truly appreciate it!
+*TL;DR = You have permission to use, modify, and distribute this code, however I ask if you don't distribute this code, but absolutely use it for yourself. Thank you, I truly appreciate it!*
 
 ---
 
