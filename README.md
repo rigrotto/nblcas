@@ -116,4 +116,4 @@ static-site 2/
 
 ## Disclaimer
 
-NBLCAS is an independent fan project and is not affiliated with, endorsed by, or connected to the National Basketball League (NBL) or any of its member clubs.
+NBLCAS is not affiliated with the National Basketball League.
