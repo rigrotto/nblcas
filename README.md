@@ -77,11 +77,11 @@ A fan-made web app tracking Australian/NZ NBL player contracts and advanced stat
 
 ## Deploying on Cloudflare Pages:
 
-The entire site lives in the `static-site 2/` directory. There is no build step.
+The entire site lives in the `static-site/` directory. There is no build step.
 
 1. Push this repository to GitHub.
 2. In the [Cloudflare Pages dashboard](https://pages.cloudflare.com/), create a new project and connect your GitHub repo.
-3. Set the **build output directory** to `static-site 2` and leave the build command blank.
+3. Set the **build output directory** to `static-site` and leave the build command blank.
 4. Deploy — Cloudflare will serve the files directly.
 
 On every subsequent push to `main`, Cloudflare Pages will automatically redeploy.
@@ -91,7 +91,7 @@ On every subsequent push to `main`, Cloudflare Pages will automatically redeploy
 ## Running locally:
 
 ```bash
-python3 -m http.server 8080 --directory static-site 2
+python3 -m http.server 8080 --directory static-site
 ```
 
 Then open [http://localhost:8080](http://localhost:8080).
@@ -101,7 +101,7 @@ Then open [http://localhost:8080](http://localhost:8080).
 ## File Tree:
 
 ```
-static-site 2/
+static-site/
 ├── index.html           # Home page
 ├── contracts.html       # Contract tracker
 ├── contracts-info.html  # Contract types guide
