@@ -1,6 +1,6 @@
 # NBLCAS — NBL Contract And Statistics 
 ![NBLCAS](nblcas-longlogo.png)
-[View Website](https://nblcas.pages.dev/)
+[View Website](https://nblcas.pages.dev)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
@@ -12,13 +12,24 @@
 
 ---
 
-A fan-made web app tracking Australian/NZ NBL player contracts and advanced statistics. Built with plain HTML, CSS, and vanilla JavaScript — no build step, no dependencies, no framework.
+<img src="whatisit.png" width="50%">
 
-![Demo](demo.gif)
+A fan-made web app tracking Australian/NZ NBL player contracts and advanced statistics. Built with plain HTML, CSS, and vanilla JavaScript — no build step, no dependencies, no framework.
 
 ---
 
-## Pages
+<img src="showcase.png" width="50%">
+
+<table>
+  <tr>
+    <td><img src="showcase1.png" width="100%"></td>
+    <td><img src="showcase2.png" width="100%"></td>
+  </tr>
+</table>
+
+---
+
+<img src="pages.png" width="50%">
 
 | Page | Description |
 |---|---|
@@ -30,7 +41,7 @@ A fan-made web app tracking Australian/NZ NBL player contracts and advanced stat
 
 ---
 
-## Features
+<img src="features.png" width="50%">
 
 ### Contracts tracker
 - **10 team tabs** — switch between all NBL clubs instantly; data is cached after first load
@@ -50,7 +61,7 @@ A fan-made web app tracking Australian/NZ NBL player contracts and advanced stat
 
 ---
 
-## Tech stack
+<img src="techstack.png" width="50%">
 
 | Layer | Choice |
 |---|---|
@@ -64,7 +75,7 @@ A fan-made web app tracking Australian/NZ NBL player contracts and advanced stat
 
 ---
 
-## Deploying to Cloudflare Pages
+<img src="cloudflarepages.png" width="50%">
 
 The entire site lives in the `static-site 2/` directory. There is no build step.
 
@@ -77,7 +88,7 @@ On every subsequent push to `main`, Cloudflare Pages will automatically redeploy
 
 ---
 
-## Running locally
+<img src="local.png" width="50%">
 
 ```bash
 python3 -m http.server 8080 --directory static-site 2
@@ -87,7 +98,7 @@ Then open [http://localhost:8080](http://localhost:8080).
 
 ---
 
-## Project structure
+<img src="filetree.png" width="50%">
 
 ```
 static-site 2/
@@ -103,19 +114,19 @@ static-site 2/
 
 ---
 
-## Data sources
+<img src="sources.png" width="50%">
 
 - **Contract data** — [SpatialJam Contract Tracker](https://spatialjam.com/contracttracker), served via Google Sheets CSV
 - **Player statistics** — [Tableau Public](https://public.tableau.com/views/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages)
 
 ---
 
-## License
+<img src="license.png" width="50%">
 
 [MIT](LICENSE) © 2026 rigrotto
 
 ---
 
-## Disclaimer
+<img src="disclaimer.png" width="50%">
 
-NBLCAS is not affiliated with the National Basketball League.
+NBLCAS is not affiliated with the [National Basketball League](https://nbl.com.au).
