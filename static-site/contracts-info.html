@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contract Types | NBLCAS</title>
+  <script>try{if(localStorage.getItem('nbl-theme')==='light')document.documentElement.classList.remove('dark');}catch(e){}</script>
+  <link rel="icon" type="image/png" href="/nblcas-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .info-page { max-width: 52rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+    .breadcrumb {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      font-size: 0.8125rem; color: var(--fg-muted); margin-bottom: 2rem;
+      transition: color 0.15s;
+    }
+    .breadcrumb:hover { color: var(--primary); }
+    .info-heading {
+      font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 0.5rem;
+    }
+    .info-heading span { color: var(--primary); }
+    .info-lead {
+      font-size: 0.9375rem; color: var(--fg-muted); margin-bottom: 2.5rem; max-width: 38rem;
+    }
+    .type-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 3rem;
+    }
+    @media (min-width: 640px) { .type-grid { grid-template-columns: 1fr 1fr; } }
+    .type-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.375rem 1.25rem; display: flex; flex-direction: column; gap: 0.625rem;
+    }
+    .type-card-top { display: flex; align-items: center; gap: 0.625rem; }
+    .type-desc { font-size: 0.875rem; color: var(--fg-muted); line-height: 1.65; }
+    .options-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.375rem 1.25rem; margin-bottom: 1rem;
+    }
+    .options-card-top { display: flex; align-items: center; gap: 0.625rem; margin-bottom: 0.625rem; }
+    .options-label {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.9375rem; font-weight: 600; color: var(--fg);
+    }
+    .options-desc { font-size: 0.875rem; color: var(--fg-muted); line-height: 1.65; }
+    .options-sub { margin-top: 0.875rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .option-row {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.875rem; color: var(--fg-muted);
+    }
+    .option-row .dot { margin-top: 0.375rem; flex-shrink: 0; }
+    .section-divider {
+      border: none; border-top: 1px solid var(--border); margin: 2.25rem 0;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-muted);
+      margin-bottom: 1rem;
+    }
+    /* badge classes re-used from style.css */
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="/" class="nav-link" data-page="home">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="/contracts.html" class="nav-link active" data-page="contracts">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+        Contracts
+      </a>
+      <a href="/stats.html" class="nav-link" data-page="stats">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Player Stats
+      </a>
+    </div>
+    <button class="nav-theme-btn" id="theme-toggle" aria-label="Toggle theme">
+      <svg id="theme-icon-dark" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="theme-icon-light" class="hidden" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Content -->
+<div class="info-page">
+
+  <a href="/contracts.html" class="breadcrumb">
+    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Contracts
+  </a>
+
+  <h1 class="info-heading">CONTRACT<span> TYPES</span></h1>
+  <p class="info-lead">A guide to the player designations used in the NBL contract tracker. Each type reflects a player's eligibility category under NBL rules.</p>
+
+  <p class="section-title">Player Designations</p>
+
+  <div class="type-grid">
+
+    <div class="type-card">
+      <div class="type-card-top">
+        <span class="badge badge-local">Local</span>
+      </div>
+      <p class="type-desc">Any player who holds a passport from Australia and/or New Zealand. Local players do not count against a team's import limit.</p>
+    </div>
+
+    <div class="type-card">
+      <div class="type-card-top">
+        <span class="badge badge-import">Import</span>
+      </div>
+      <p class="type-desc">Any player who is not from Australia or New Zealand. Teams are permitted a limited number of import roster spots each season.</p>
+    </div>
+
+    <div class="type-card">
+      <div class="type-card-top">
+        <span class="badge badge-next">Next Star</span>
+      </div>
+      <p class="type-desc">A younger player signed to a professional contract designed to develop their game in preparation for the NBA draft. The team holds a professional option over future seasons.</p>
+    </div>
+
+    <div class="type-card">
+      <div class="type-card-top">
+        <span class="badge badge-srp">SRP</span>
+      </div>
+      <p class="type-desc"><strong style="color:var(--fg)">Special Restricted Player.</strong> An overseas player from one of the designated NBL partner countries: China, Philippines, Taiwan, India, South Korea, Singapore, and Japan.</p>
+    </div>
+
+    <div class="type-card" style="grid-column: 1 / -1; max-width: 50%;">
+      <div class="type-card-top">
+        <span class="badge badge-default">DEV</span>
+      </div>
+      <p class="type-desc"><strong style="color:var(--fg)">Development Player.</strong> An Australian or New Zealand player under the age of 25 who has never previously been contracted by an NBL club. Development players are typically on reduced salaries and are subject to special roster rules.</p>
+    </div>
+
+  </div>
+
+  <hr class="section-divider">
+
+  <p class="section-title">Contract Options</p>
+
+  <div class="options-card">
+    <div class="options-card-top">
+      <span class="dot dot-blue" style="flex-shrink:0;"></span>
+      <span class="options-label">Team / Player / Mutual Options</span>
+    </div>
+    <p class="options-desc">When a player signs a multiyear contract, stipulations can be added to additional seasons that give either the team, the player, or both parties control over whether the contract continues into future years.</p>
+    <div class="options-sub">
+      <div class="option-row">
+        <span class="dot dot-blue"></span>
+        <span><strong style="color:var(--fg)">Team Option</strong> — the club decides whether to exercise the contract for the following season, giving them roster flexibility.</span>
+      </div>
+      <div class="option-row">
+        <span class="dot dot-blue"></span>
+        <span><strong style="color:var(--fg)">Player Option</strong> — the player decides whether to continue under the existing terms or enter free agency.</span>
+      </div>
+      <div class="option-row">
+        <span class="dot dot-blue"></span>
+        <span><strong style="color:var(--fg)">Mutual Option</strong> — both the club and the player must agree for the contract to continue into the option year.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-card">
+    <div class="options-card-top">
+      <span class="dot dot-amber" style="flex-shrink:0;"></span>
+      <span class="options-label">Free Agency (FA / UFA / RFA)</span>
+    </div>
+    <p class="options-desc">When a player's contract expires or an option is not exercised, they enter free agency. <strong style="color:var(--fg)">UFA</strong> (Unrestricted Free Agent) means any team can sign them. <strong style="color:var(--fg)">RFA</strong> (Restricted Free Agent) means their current club has the right to match any outside offer.</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div>
+        <p class="footer-heading">Site Pages</p>
+        <div class="footer-links-row">
+          <a href="/" class="footer-link">Home</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts.html" class="footer-link">Contracts</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts-info.html" class="footer-link">Contract Types</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats.html" class="footer-link">Statistics</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats-info.html" class="footer-link">Stats Glossary</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Credits</p>
+        <div class="footer-links-row">
+          <a href="https://spatialjam.com/contracttracker" target="_blank" rel="noopener noreferrer" class="footer-link">SpatialJam</a>
+          <span class="footer-sep">·</span>
+          <a href="https://public.tableau.com/views/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages" target="_blank" rel="noopener noreferrer" class="footer-link">Tableau</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026-present NBLCAS. All Rights Reserved.</p>
+        <p>NBLCAS is not affiliated with the National Basketball League.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0.625rem;flex-shrink:0;">
+      <img src="/nblcas-logo.png" alt="NBLCAS" class="footer-logo">
+      <a href="https://github.com/rigrotto/nblcas" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/badge/View%20on%20GitHub-181717?style=flat&logo=github&logoColor=white" alt="View on GitHub">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const darkIcon  = document.getElementById('theme-icon-dark');
+  const lightIcon = document.getElementById('theme-icon-light');
+  function syncIcons() {
+    const dark = html.classList.contains('dark');
+    darkIcon.classList.toggle('hidden', dark);
+    lightIcon.classList.toggle('hidden', !dark);
+  }
+  syncIcons();
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const isDark = html.classList.toggle('dark');
+    try { localStorage.setItem('nbl-theme', isDark ? 'dark' : 'light'); } catch(e) {}
+    syncIcons();
+  });
+</script>
+</body>
+</html>

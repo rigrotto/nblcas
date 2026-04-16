@@ -12,13 +12,13 @@
 
 ---
 
-<img src="whatisit.png" width="50%">
+## What is it?
 
 A fan-made web app tracking Australian/NZ NBL player contracts and advanced statistics. Built with plain HTML, CSS, and vanilla JavaScript — no build step, no dependencies, no framework.
 
 ---
 
-<img src="showcase.png" width="50%">
+## Showcase:
 
 <table>
   <tr>
@@ -29,7 +29,7 @@ A fan-made web app tracking Australian/NZ NBL player contracts and advanced stat
 
 ---
 
-<img src="pages.png" width="50%">
+## Pages:
 
 | Page | Description |
 |---|---|
@@ -41,7 +41,7 @@ A fan-made web app tracking Australian/NZ NBL player contracts and advanced stat
 
 ---
 
-<img src="features.png" width="50%">
+## Features:
 
 ### Contracts tracker
 - **10 team tabs** — switch between all NBL clubs instantly; data is cached after first load
@@ -61,7 +61,7 @@ A fan-made web app tracking Australian/NZ NBL player contracts and advanced stat
 
 ---
 
-<img src="techstack.png" width="50%">
+## Tech Stack:
 
 | Layer | Choice |
 |---|---|
@@ -75,7 +75,7 @@ A fan-made web app tracking Australian/NZ NBL player contracts and advanced stat
 
 ---
 
-<img src="cloudflarepages.png" width="50%">
+## Deploying on Cloudflare Pages:
 
 The entire site lives in the `static-site 2/` directory. There is no build step.
 
@@ -88,7 +88,7 @@ On every subsequent push to `main`, Cloudflare Pages will automatically redeploy
 
 ---
 
-<img src="local.png" width="50%">
+## Running locally:
 
 ```bash
 python3 -m http.server 8080 --directory static-site 2
@@ -98,7 +98,7 @@ Then open [http://localhost:8080](http://localhost:8080).
 
 ---
 
-<img src="filetree.png" width="50%">
+## File Tree:
 
 ```
 static-site 2/
@@ -114,19 +114,19 @@ static-site 2/
 
 ---
 
-<img src="sources.png" width="50%">
+## Sources:
 
 - **Contract data** — [SpatialJam Contract Tracker](https://spatialjam.com/contracttracker), served via Google Sheets CSV
 - **Player statistics** — [Tableau Public](https://public.tableau.com/views/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages)
 
 ---
 
-<img src="license.png" width="50%">
+## License:
 
 [MIT](LICENSE) © 2026 rigrotto
 
 ---
 
-<img src="disclaimer.png" width="50%">
+## Disclaimer:
 
 NBLCAS is not affiliated with the [National Basketball League](https://nbl.com.au).
