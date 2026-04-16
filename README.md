@@ -1,5 +1,6 @@
 # NBLCAS — NBL Contract And Statistics 
 ![NBLCAS](nblcas-longlogo.png)
+[View Website](https://nblcas.pages.dev/)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
@@ -59,11 +60,11 @@ A fan-made web app tracking Australian NBL player contracts and advanced statist
 
 ## Deploying to Cloudflare Pages
 
-The entire site lives in the `static-site/` directory. There is no build step.
+The entire site lives in the `static-site 2/` directory. There is no build step.
 
 1. Push this repository to GitHub.
 2. In the [Cloudflare Pages dashboard](https://pages.cloudflare.com/), create a new project and connect your GitHub repo.
-3. Set the **build output directory** to `static-site` and leave the build command blank.
+3. Set the **build output directory** to `static-site 2` and leave the build command blank.
 4. Deploy — Cloudflare will serve the files directly.
 
 On every subsequent push to `main`, Cloudflare Pages will automatically redeploy.
@@ -73,7 +74,7 @@ On every subsequent push to `main`, Cloudflare Pages will automatically redeploy
 ## Running locally
 
 ```bash
-python3 -m http.server 8080 --directory static-site
+python3 -m http.server 8080 --directory static-site 2
 ```
 
 Then open [http://localhost:8080](http://localhost:8080).
@@ -83,7 +84,7 @@ Then open [http://localhost:8080](http://localhost:8080).
 ## Project structure
 
 ```
-static-site/
+static-site 2/
 ├── index.html           # Home page
 ├── contracts.html       # Contract tracker
 ├── contracts-info.html  # Contract types guide
@@ -105,7 +106,7 @@ static-site/
 
 ## License
 
-[MIT](LICENSE) © 2026 NBLCAS
+[MIT](LICENSE) © 2026 rigrotto
 
 ---
 
