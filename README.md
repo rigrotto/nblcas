@@ -6,6 +6,7 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![EXPORT CSV](https://img.shields.io/badge/Contract%20Page%20Export-CSV%20File-green)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-F38020?style=flat&logo=cloudflare&logoColor=white)
 
 A fan-made web app tracking Australian NBL player contracts and advanced statistics. Built with plain HTML, CSS, and vanilla JavaScript — no build step, no dependencies, no framework.
@@ -34,7 +35,7 @@ A fan-made web app tracking Australian NBL player contracts and advanced statist
 - **Sortable columns** — click any column header to sort ascending / descending
 - **Player modal** — click a player's name for a full contract breakdown across current and historical seasons
 - **Position breakdown** — pill chips under the team header showing roster composition by position
-- **Export CSV** — download the current filtered table as a `.csv` file (works in both single-team and all-teams mode)
+- **Contract Table Export** — download the current filtered table as a `.csv` file (works in both single-team and all-teams mode)
 - **Status badges** — colour-coded player type badges and contract status dots (active, free agent, option year)
 
 ### General
