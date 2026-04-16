@@ -7,8 +7,6 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-F38020?style=flat&logo=cloudflare&logoColor=white)
-![EXPORT CSV](https://img.shields.io/badge/Table%20Export-CSV%20File-green)
-![Vanilla JS](https://img.shields.io/badge/Vanilla%20JS-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Last Commit](https://img.shields.io/badge/Last%20Commit-April%202026-blue)
 ![Release](https://img.shields.io/badge/Release-v1.0-brightgreen)
 
