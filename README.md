@@ -10,6 +10,7 @@
 ![Last Commit](https://img.shields.io/badge/Last%20Commit-April%202026-blue)
 ![Release](https://img.shields.io/badge/Release-v1.0-brightgreen)
 ![★](https://img.shields.io/badge/Stargaze-★-yellow.svg)
+![View Website](https://img.shields.io/badge/View%20Website-white.svg)
 
 ---
 
