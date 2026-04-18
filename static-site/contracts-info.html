@@ -238,5 +238,27 @@
     syncIcons();
   });
 </script>
+<script>
+  const announcementScript = document.createElement('script');
+  announcementScript.src = 'https://cdn.mida.so/js/banner.js';
+  announcementScript.onload = function() {
+    createNotificationBanner({
+      text: "NBL Free Agency is live!",
+      buttonText: "View the latest.",
+      buttonLink: "https://www.nbl.com.au/news/nbl26-free-agency-every-move-as-it-happens",
+      isFixed: true,
+      backgroundColor: "#000000",
+      textColor: "#ffffff",
+      buttonBackgroundColor: "#ff741f",
+      buttonTextColor: "#ffffff",
+      fontSize: "14px",
+      buttonFontSize: "14px",
+      isCloseable: true,
+      closeButtonColor: "#ffffff",
+      uniqueKey: "nblfreeagency"
+    });
+  };
+  document.head.appendChild(announcementScript);
+</script>
 </body>
 </html>
