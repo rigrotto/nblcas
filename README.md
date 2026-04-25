@@ -1,6 +1,5 @@
 # NBLCAS — NBL Contract And Statistics 
 ![NBLCAS](nblcas-longlogo.png)
-[View Website](https://nblcas.pages.dev)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
@@ -9,8 +8,6 @@
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-F38020?style=flat&logo=cloudflare&logoColor=white)
 ![Last Commit](https://img.shields.io/badge/Last%20Commit-April%202026-blue)
 ![Release](https://img.shields.io/badge/Release-v1.0-brightgreen)
-![★](https://img.shields.io/badge/Stargaze-★-yellow.svg)
-![View Website](https://img.shields.io/badge/View%20Website-white.svg)
 
 ---
 
