@@ -81,9 +81,32 @@
   </style>
 </head>
 <body>
-  <marquee>
-  NBL FREE AGENCY IS LIVE! <a href="https://www.nbl.com.au/news/nbl26-free-agency-every-move-as-it-happens">SEE THE LATEST.</a>
-  </marquee>
+    {/* Announcement Banner */}
+<div className="bg-linear-to-r from-red-500 via-purple-400 to-amber-500 dark:to-amber-200">
+  <div className="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
+    {/* Grid */}
+    <div className="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
+      <div className="text-center md:text-start">
+        <p className="text-xs text-white/80 uppercase">
+          NBL.COM.AU
+        </p>
+        <p className="mt-1 text-white font-medium">
+          Free Agency Tracker: Rolling updates, signings and reported moves
+        </p>
+      </div>
+      {/* End Col */}
+
+      <div className="mt-3 text-center md:text-start md:flex md:justify-end md:items-center">
+        <a className="py-2 px-3 md:py-3 md:px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full bg-white dark:bg-neutral-800 border border-stone-200 dark:border-neutral-700 text-stone-800 dark:text-white shadow-2xs hover:bg-stone-50 dark:hover:bg-neutral-700 focus:outline-hidden focus:bg-stone-50 dark:focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none" href="https://www.nbl.com.au/news/nbl26-free-agency-every-move-as-it-happens">
+          Follow Along
+        </a>
+      </div>
+      {/* End Col */}
+    </div>
+    {/* End Grid */}
+  </div>
+</div>
+{/* End Announcement Banner */}
 <!-- Nav -->
 <nav class="nav">
   <div class="nav-inner">
