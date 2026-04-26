@@ -7,7 +7,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-F38020?style=flat&logo=cloudflare&logoColor=white)
 ![Last Commit](https://img.shields.io/badge/Last%20Commit-April%202026-blue)
-![Release](https://img.shields.io/badge/Release-v1.0-brightgreen)
+![Release](https://img.shields.io/badge/Release-v1.1.2-brightgreen)
 
 ---
 
