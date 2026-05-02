@@ -1,5 +1,5 @@
 # NBLCAS — NBL Contract And Statistics 
-![NBLCAS](nblcas-longlogo.png)
+![NBLCAS banner](banner.png)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
