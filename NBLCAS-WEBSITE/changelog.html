@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog | NBLCAS</title>
+  <script>try{if(localStorage.getItem('nbl-theme')==='light')document.documentElement.classList.remove('dark');}catch(e){}</script>
+  <link rel="icon" type="image/png" href="/nblcas-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=3">
+  <style>
+    .nav-dropdown-menu{display:none!important;position:absolute!important;top:calc(100% + 4px);left:0;min-width:200px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.3125rem;z-index:200;flex-direction:column;box-shadow:0 8px 24px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.08)}
+    .nav-dropdown.open .nav-dropdown-menu{display:flex!important}
+  </style>
+  <style>
+    .cl-page { max-width: 52rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .cl-eyebrow {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--primary); margin-bottom: 0.75rem;
+    }
+    .cl-heading {
+      font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; font-weight: 700;
+      letter-spacing: -0.025em; margin-bottom: 0.75rem; line-height: 1.15;
+    }
+    .cl-heading span { color: var(--primary); }
+    .cl-lead {
+      font-size: 0.9375rem; color: var(--fg-muted); margin-bottom: 3rem; line-height: 1.7;
+    }
+
+    /* Timeline */
+    .cl-timeline { position: relative; padding-left: 1.5rem; }
+    .cl-timeline::before {
+      content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .cl-entry { position: relative; margin-bottom: 2.5rem; }
+    .cl-entry::before {
+      content: ''; position: absolute; left: -1.5rem; top: 0.4rem;
+      width: 0.5rem; height: 0.5rem; border-radius: 50%;
+      background: var(--border); border: 2px solid var(--bg);
+      transform: translateX(-3px);
+    }
+    .cl-entry.latest::before { background: var(--primary); }
+    .cl-entry-header { display: flex; align-items: center; gap: 0.625rem; margin-bottom: 0.625rem; flex-wrap: wrap; }
+    .cl-date {
+      font-size: 0.75rem; font-weight: 600; color: var(--fg-muted);
+      background: var(--muted); border: 1px solid var(--border);
+      border-radius: 0.25rem; padding: 0.125rem 0.5rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .cl-version {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; font-weight: 700;
+      color: var(--fg);
+    }
+    .cl-badge {
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 0.125rem 0.4375rem; border-radius: 0.25rem;
+    }
+    .cl-badge-feature { background: color-mix(in srgb, var(--primary) 12%, transparent); color: var(--primary); }
+    .cl-badge-fix     { background: color-mix(in srgb, hsl(142,71%,45%) 12%, transparent); color: hsl(142,71%,45%); }
+    .cl-badge-data    { background: color-mix(in srgb, hsl(217,91%,60%) 12%, transparent); color: hsl(217,91%,60%); }
+
+    .cl-entry-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.0625rem; font-weight: 600;
+      color: var(--fg); margin-bottom: 0.5rem;
+    }
+    .cl-entry-body {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.125rem;
+    }
+    .cl-entry-body ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.375rem; }
+    .cl-entry-body li {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 0.875rem; color: var(--fg-muted); line-height: 1.6;
+    }
+    .cl-entry-body li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--fg-muted); flex-shrink: 0; margin-top: 0.5rem;
+    }
+    .cl-entry-body li strong { color: var(--fg); font-weight: 600; }
+
+    .cl-section-label {
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg-muted); margin-bottom: 1.25rem;
+    }
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" id="nav-root"></nav>
+
+<!-- Content -->
+<div class="cl-page">
+
+  <p class="cl-eyebrow">NBLCAS</p>
+  <h1 class="cl-heading">CHANGE<span>LOG</span></h1>
+  <p class="cl-lead">A record of updates to NBLCAS — new features, data refreshes, and site improvements.</p>
+
+  <p class="cl-section-label">Recent Updates</p>
+
+  <div class="cl-timeline">
+
+    <div class="cl-entry latest">
+      <div class="cl-entry-header">
+        <span class="cl-date">2 May 2026</span>
+        <span class="cl-version">v1.4</span>
+        <span class="cl-badge cl-badge-feature">Feature</span>
+      </div>
+      <div class="cl-entry-title">Team pages &amp; nav dropdowns</div>
+      <div class="cl-entry-body">
+        <ul>
+          <li><strong>Teams dropdown</strong> — added a Teams menu in the nav bar with a dedicated page for each of the 10 NBL clubs, showing their full contracted roster.</li>
+          <li><strong>More dropdown</strong> — added a More menu in the nav containing the new Changelog page.</li>
+          <li><strong>Changelog</strong> — this page! A running record of site updates.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-entry-header">
+        <span class="cl-date">1 May 2026</span>
+        <span class="cl-version">v1.3</span>
+        <span class="cl-badge cl-badge-feature">Feature</span>
+      </div>
+      <div class="cl-entry-title">Docusaurus-style documentation hub</div>
+      <div class="cl-entry-body">
+        <ul>
+          <li><strong>Docs hub</strong> — the Docs section is now a proper on-site documentation hub with a sticky sidebar, section labels, breadcrumb trail, and prev/next page navigation.</li>
+          <li><strong>Nav updated</strong> — the Docs nav link now opens the on-site hub instead of redirecting to GitHub.</li>
+          <li><strong>Footer links</strong> — all footer Documentation links now point to on-site pages.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-entry-header">
+        <span class="cl-date">30 Apr 2026</span>
+        <span class="cl-version">v1.2</span>
+        <span class="cl-badge cl-badge-feature">Feature</span>
+      </div>
+      <div class="cl-entry-title">On-site documentation pages</div>
+      <div class="cl-entry-body">
+        <ul>
+          <li><strong>Contract Types</strong> — added an on-site guide for all NBL player designations (Local, Import, Next Star, SRP, DEV) plus contract option types.</li>
+          <li><strong>Stats Glossary</strong> — added a searchable glossary of all 21 advanced statistics tracked on the Player Stats page.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-entry-header">
+        <span class="cl-date">15 Mar 2026</span>
+        <span class="cl-version">v1.1</span>
+        <span class="cl-badge cl-badge-data">Data</span>
+      </div>
+      <div class="cl-entry-title">2025-26 season roster update</div>
+      <div class="cl-entry-body">
+        <ul>
+          <li>Updated contract data across all 10 teams for the 2025-26 NBL season.</li>
+          <li>Added early 2026-27 and 2027-28 option year data where available.</li>
+          <li>Updated player status fields to reflect off-season signings and departures.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-entry-header">
+        <span class="cl-date">1 Jan 2026</span>
+        <span class="cl-version">v1.0</span>
+        <span class="cl-badge cl-badge-feature">Feature</span>
+      </div>
+      <div class="cl-entry-title">Initial launch</div>
+      <div class="cl-entry-body">
+        <ul>
+          <li><strong>Contracts tracker</strong> — live-synced from Google Sheets, covering all 10 NBL teams with player type badges, contract option details, and player modal cards.</li>
+          <li><strong>Player Stats</strong> — embedded Tableau dashboard with historical NBL player averages and advanced metrics.</li>
+          <li><strong>Dark / light theme</strong> — system-aware theme toggle with persistent user preference.</li>
+          <li>Site deployed to <a href="https://nblcas.pages.dev" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">nblcas.pages.dev</a> via Cloudflare Pages.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div>
+        <p class="footer-heading">Site Pages</p>
+        <div class="footer-links-row">
+          <a href="/" class="footer-link">Home</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts.html" class="footer-link">Contracts</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats.html" class="footer-link">Statistics</a>
+          <span class="footer-sep">·</span>
+          <a href="/docs.html" class="footer-link">Docs</a>
+          <span class="footer-sep">·</span>
+          <a href="/changelog.html" class="footer-link">Changelog</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Documentation</p>
+        <div class="footer-links-row">
+          <a href="/docs.html" class="footer-link">Overview</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts-info.html" class="footer-link">Contract Types</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats-info.html" class="footer-link">Stats Glossary</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Credits</p>
+        <div class="footer-links-row">
+          <a href="https://spatialjam.com/contracttracker" target="_blank" rel="noopener noreferrer" class="footer-link">SpatialJam</a>
+          <span class="footer-sep">·</span>
+          <a href="https://public.tableau.com/views/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages" target="_blank" rel="noopener noreferrer" class="footer-link">Tableau</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026-present NBLCAS. All Rights Reserved.</p>
+        <p>NBLCAS is not affiliated with the National Basketball League.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0.625rem;flex-shrink:0;">
+      <img src="/nblcas-logo.png" alt="NBLCAS" class="footer-logo">
+      <a href="https://github.com/rigrotto/nblcas" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/badge/View%20on%20GitHub-181717?style=flat&logo=github&logoColor=white" alt="View on GitHub">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+</script>
+<script src="/nav.js?v=3"></script>
+</body>
+</html>

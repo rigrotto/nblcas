@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contracts | NBLCAS</title>
+  <script>try{if(localStorage.getItem('nbl-theme')==='light')document.documentElement.classList.remove('dark');}catch(e){}</script>
+  <link rel="icon" type="image/png" href="/nblcas-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=3">
+  <style>
+    .nav-dropdown-menu{display:none!important;position:absolute!important;top:calc(100% + 4px);left:0;min-width:200px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.3125rem;z-index:200;flex-direction:column;box-shadow:0 8px 24px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.08)}
+    .nav-dropdown.open .nav-dropdown-menu{display:flex!important}
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" id="nav-root"></nav>
+
+<!-- Page header -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-top">
+      <div>
+        <span class="page-eyebrow">Australian Basketball</span>
+        <h1 class="page-title">NBL CONTRACT<span style="color:var(--primary)"> TRACKER</span></h1>
+        <p class="page-subtitle">Current &amp; future contracted players per club. Live data.</p>
+      </div>
+      <div class="page-actions">
+        <span class="updated-time" id="updated-time"></span>
+        <button class="btn btn-secondary" id="refresh-btn" disabled>
+          <svg id="refresh-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          <span id="refresh-label">Refresh</span>
+        </button>
+      </div>
+    </div>
+    <!-- Team tabs (JS-rendered) -->
+    <div class="team-tabs-outer" id="team-tabs"></div>
+  </div>
+</div>
+
+<!-- Main content -->
+<div class="main-content">
+
+  <!-- Team info (JS-rendered) -->
+  <div class="team-info-row" id="team-info"></div>
+
+  <!-- Search row -->
+  <div class="search-row">
+    <div class="search-wrapper">
+      <span class="search-icon">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input type="search" class="search-input" id="search-input" placeholder="Search players, contracts…" autocomplete="off">
+    </div>
+    <button class="btn btn-filter" id="filter-btn">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      Filter
+      <span id="filter-dot" class="hidden" style="width:6px;height:6px;border-radius:50%;background:currentColor;opacity:0.7;flex-shrink:0;"></span>
+    </button>
+    <button class="btn btn-secondary" id="global-btn">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      All teams
+    </button>
+    <button class="btn btn-clear hidden" id="clear-btn">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      Clear
+    </button>
+  </div>
+
+  <!-- Filter panel -->
+  <div class="filter-panel hidden" id="filter-panel">
+    <label class="filter-label" for="status-select">Player Type</label>
+    <select class="filter-select" id="status-select"></select>
+  </div>
+
+  <!-- Global search results (all-teams mode) -->
+  <div id="global-box" class="hidden"></div>
+
+  <!-- Error -->
+  <div class="error-box hidden" id="error-box">
+    <span id="error-text"></span>
+    <button class="error-retry" id="error-retry">Retry</button>
+  </div>
+
+  <!-- Loading skeleton -->
+  <div class="skeleton-wrap hidden" id="loading-box">
+    <div class="skeleton-head"><div class="skeleton-bar" style="width:33%"></div></div>
+    <div class="skeleton-row">
+      <div class="skeleton-cell" style="width:140px;animation-delay:0ms"></div>
+      <div class="skeleton-cell" style="width:70px;animation-delay:25ms"></div>
+      <div class="skeleton-cell" style="width:60px;animation-delay:50ms"></div>
+      <div class="skeleton-cell" style="width:90px;animation-delay:75ms"></div>
+      <div class="skeleton-cell" style="width:90px;animation-delay:100ms"></div>
+    </div>
+    <div class="skeleton-row">
+      <div class="skeleton-cell" style="width:140px;animation-delay:150ms"></div>
+      <div class="skeleton-cell" style="width:70px;animation-delay:175ms"></div>
+      <div class="skeleton-cell" style="width:60px;animation-delay:200ms"></div>
+      <div class="skeleton-cell" style="width:90px;animation-delay:225ms"></div>
+      <div class="skeleton-cell" style="width:90px;animation-delay:250ms"></div>
+    </div>
+    <div class="skeleton-row">
+      <div class="skeleton-cell" style="width:140px;animation-delay:300ms"></div>
+      <div class="skeleton-cell" style="width:70px;animation-delay:325ms"></div>
+      <div class="skeleton-cell" style="width:60px;animation-delay:350ms"></div>
+      <div class="skeleton-cell" style="width:90px;animation-delay:375ms"></div>
+      <div class="skeleton-cell" style="width:90px;animation-delay:400ms"></div>
+    </div>
+    <div class="skeleton-row">
+      <div class="skeleton-cell" style="width:140px;animation-delay:450ms"></div>
+      <div class="skeleton-cell" style="width:70px;animation-delay:475ms"></div>
+      <div class="skeleton-cell" style="width:60px;animation-delay:500ms"></div>
+      <div class="skeleton-cell" style="width:90px;animation-delay:525ms"></div>
+      <div class="skeleton-cell" style="width:90px;animation-delay:550ms"></div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap hidden" id="table-box">
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+    <div class="table-footer">
+      <span class="table-count" id="table-count"></span>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button class="btn btn-secondary" id="export-btn" style="font-size:0.75rem;padding:0.375rem 0.625rem;gap:0.375rem;">
+          <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export CSV
+        </button>
+        <a href="https://spatialjam.com/contracttracker" target="_blank" rel="noopener noreferrer" class="source-link">
+          Data: SpatialJam
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend hidden" id="legend-box">
+    <h3 class="legend-title">Legend</h3>
+    <div class="legend-grid">
+      <div>
+        <p class="legend-section-lbl">Player Type</p>
+        <div class="legend-badges">
+          <span class="badge badge-local">Local</span>
+          <span class="badge badge-import">Import</span>
+          <span class="badge badge-next">Next Star</span>
+          <span class="badge badge-srp">SRP</span>
+        </div>
+      </div>
+      <div>
+        <p class="legend-section-lbl">Contract Status</p>
+        <div class="legend-dots">
+          <span class="legend-dot-item"><span class="legend-dot dot-green"></span> Signed / Active</span>
+          <span class="legend-dot-item"><span class="legend-dot dot-amber"></span> Free Agent (FA/UFA/RFA)</span>
+          <span class="legend-dot-item"><span class="legend-dot dot-blue"></span> Option Year</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);">
+      <a href="/contracts-info.html" class="legend-info-link">
+        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Contract types guide
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /main-content -->
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div>
+        <p class="footer-heading">Site Pages</p>
+        <div class="footer-links-row">
+          <a href="/" class="footer-link">Home</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts.html" class="footer-link">Contracts</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts-info.html" class="footer-link">Contract Types</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats.html" class="footer-link">Statistics</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats-info.html" class="footer-link">Stats Glossary</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Documentation</p>
+        <div class="footer-links-row">
+          <a href="/docs.html" class="footer-link">Overview</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts-info.html" class="footer-link">Contract Types</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats-info.html" class="footer-link">Stats Glossary</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Credits</p>
+        <div class="footer-links-row">
+          <a href="https://spatialjam.com/contracttracker" target="_blank" rel="noopener noreferrer" class="footer-link">SpatialJam</a>
+          <span class="footer-sep">·</span>
+          <a href="https://public.tableau.com/views/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages" target="_blank" rel="noopener noreferrer" class="footer-link">Tableau</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026-present NBLCAS. All Rights Reserved.</p>
+        <p>NBLCAS is not affiliated with the National Basketball League.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0.625rem;flex-shrink:0;">
+      <img src="/nblcas-logo.png" alt="NBLCAS" class="footer-logo">
+      <a href="https://github.com/rigrotto/nblcas" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/badge/View%20on%20GitHub-181717?style=flat&logo=github&logoColor=white" alt="View on GitHub">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Player modal -->
+<div class="modal-overlay hidden" id="modal">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-avatar">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="modal-info">
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-meta" id="modal-meta"></div>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Close">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script src="/contracts.js"></script>
+<script>
+</script>
+<script src="/nav.js?v=3"></script>
+</body>
+</html>

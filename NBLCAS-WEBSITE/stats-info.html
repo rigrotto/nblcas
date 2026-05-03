@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stats Glossary | NBLCAS Docs</title>
+  <script>try{if(localStorage.getItem('nbl-theme')==='light')document.documentElement.classList.remove('dark');}catch(e){}</script>
+  <link rel="icon" type="image/png" href="/nblcas-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=3">
+  <style>
+    .nav-dropdown-menu{display:none!important;position:absolute!important;top:calc(100% + 4px);left:0;min-width:200px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.3125rem;z-index:200;flex-direction:column;box-shadow:0 8px 24px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.08)}
+    .nav-dropdown.open .nav-dropdown-menu{display:flex!important}
+    /* ── Docs shell ── */
+    .docs-shell {
+      display: flex;
+      min-height: calc(100vh - 2.75rem);
+    }
+
+    /* ── Sidebar ── */
+    .dsb {
+      width: 260px; flex-shrink: 0;
+      border-right: 1px solid var(--border);
+      background: var(--bg);
+      position: sticky; top: 2.75rem;
+      height: calc(100vh - 2.75rem);
+      overflow-y: auto;
+      padding: 1.25rem 0 2rem;
+      scrollbar-width: thin;
+    }
+    .dsb-logo {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0.25rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem; font-weight: 700; color: var(--fg);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .dsb-logo:hover { color: var(--primary); }
+    .dsb-logo-icon {
+      width: 1.5rem; height: 1.5rem; border-radius: 0.3rem;
+      background: var(--primary); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: #fff;
+    }
+    .dsb-section { margin-top: 1.25rem; }
+    .dsb-section-label {
+      font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg-muted); padding: 0 1rem; margin-bottom: 0.25rem;
+    }
+    .dsb-link {
+      display: block; padding: 0.35rem 1rem;
+      font-size: 0.875rem; color: var(--fg-muted);
+      border-left: 2px solid transparent;
+      transition: color 0.12s, border-color 0.12s, background 0.12s;
+      text-decoration: none;
+    }
+    .dsb-link:hover { color: var(--fg); background: var(--accent); }
+    .dsb-link.active {
+      color: var(--primary);
+      border-left-color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 8%, transparent);
+      font-weight: 500;
+    }
+
+    /* ── Mobile sidebar toggle ── */
+    .dsb-toggle {
+      display: none; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem; margin: 0.75rem 1rem 0;
+      background: var(--muted); border: 1px solid var(--border);
+      border-radius: var(--radius); font-size: 0.8125rem;
+      color: var(--fg-muted); cursor: pointer; width: calc(100% - 2rem);
+    }
+    @media (max-width: 768px) {
+      .dsb { display: none; position: fixed; top: 2.75rem; left: 0; z-index: 40; width: 260px; }
+      .dsb.open { display: block; }
+      .dsb-toggle { display: flex; }
+    }
+
+    /* ── Main content ── */
+    .docs-content {
+      flex: 1; min-width: 0;
+      padding: 2.5rem 3rem 4rem;
+      max-width: 940px;
+    }
+    @media (max-width: 768px) { .docs-content { padding: 1.5rem 1.25rem 3rem; } }
+
+    /* ── Breadcrumb ── */
+    .docs-bc {
+      display: flex; align-items: center; gap: 0.375rem;
+      font-size: 0.8rem; color: var(--fg-muted); margin-bottom: 1.75rem;
+    }
+    .docs-bc a { color: var(--fg-muted); text-decoration: none; transition: color 0.15s; }
+    .docs-bc a:hover { color: var(--primary); }
+    .docs-bc-sep { opacity: 0.4; }
+
+    /* ── Page heading ── */
+    .docs-h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem; font-weight: 700; letter-spacing: -0.025em;
+      margin-bottom: 0.625rem; line-height: 1.2;
+    }
+    .docs-h1 span { color: var(--primary); }
+    .docs-lead {
+      font-size: 0.9375rem; color: var(--fg-muted);
+      line-height: 1.7; margin-bottom: 0.75rem; max-width: 42rem;
+    }
+
+    /* ── Search ── */
+    .glossary-search-wrap {
+      position: relative; margin-bottom: 1rem;
+    }
+    .glossary-search-icon {
+      position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%);
+      color: var(--fg-muted); pointer-events: none;
+    }
+    .glossary-search {
+      width: 100%; padding: 0.625rem 1rem 0.625rem 2.375rem;
+      background: var(--muted); border: 1px solid var(--border); border-radius: var(--radius);
+      color: var(--fg); font-size: 0.875rem; font-family: inherit; outline: none;
+      transition: border-color 0.15s;
+    }
+    .glossary-search:focus { border-color: var(--primary); }
+    .glossary-search::placeholder { color: var(--fg-muted); }
+
+    /* ── Grid ── */
+    .glossary-grid {
+      display: grid; grid-template-columns: 1fr; gap: 0.625rem;
+    }
+    @media (min-width: 560px) { .glossary-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .glossary-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1rem 1.125rem; display: flex; flex-direction: column; gap: 0.3rem;
+      transition: border-color 0.15s;
+    }
+    .stat-card:hover { border-color: var(--primary); }
+    .stat-abbr {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700;
+      color: var(--primary); letter-spacing: -0.01em;
+    }
+    .stat-name {
+      font-size: 0.8125rem; font-weight: 600; color: var(--fg);
+    }
+    .stat-desc {
+      font-size: 0.8rem; color: var(--fg-muted); line-height: 1.55;
+    }
+    .no-results {
+      grid-column: 1 / -1; padding: 2rem; text-align: center;
+      font-size: 0.875rem; color: var(--fg-muted);
+      border: 1px dashed var(--border); border-radius: var(--radius);
+    }
+    .stat-count {
+      font-size: 0.8125rem; color: var(--fg-muted); margin-bottom: 1rem;
+    }
+    .stat-count strong { color: var(--fg); }
+
+    /* ── Prev/Next nav ── */
+    .docs-page-nav {
+      display: flex; justify-content: space-between; gap: 1rem;
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .docs-page-btn {
+      display: flex; flex-direction: column; gap: 0.25rem;
+      padding: 0.875rem 1.25rem; max-width: 220px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .docs-page-btn:hover { border-color: var(--primary); }
+    .docs-page-btn.prev { align-items: flex-start; margin-right: auto; }
+    .docs-page-btn-label {
+      font-size: 0.6875rem; color: var(--fg-muted); font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .docs-page-btn-title {
+      font-size: 0.9rem; font-weight: 600; color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" id="nav-root"></nav>
+
+<div class="docs-shell">
+
+  <!-- Sidebar -->
+  <aside class="dsb" id="dsb">
+    <a href="/docs.html" class="dsb-logo">
+      <span class="dsb-logo-icon">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </span>
+      NBLCAS Docs
+    </a>
+
+    <div class="dsb-section">
+      <p class="dsb-section-label">Getting Started</p>
+      <a href="/docs.html" class="dsb-link">Introduction</a>
+    </div>
+
+    <div class="dsb-section">
+      <p class="dsb-section-label">Reference</p>
+      <a href="/contracts-info.html" class="dsb-link">Contract Types</a>
+      <a href="/stats-info.html" class="dsb-link active">Stats Glossary</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="docs-content">
+
+    <button class="dsb-toggle" id="dsb-toggle" aria-label="Toggle sidebar">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      Menu
+    </button>
+
+    <nav class="docs-bc" aria-label="breadcrumb">
+      <a href="/docs.html">Docs</a>
+      <span class="docs-bc-sep">›</span>
+      <span>Reference</span>
+      <span class="docs-bc-sep">›</span>
+      <span>Stats Glossary</span>
+    </nav>
+
+    <h1 class="docs-h1">STATS<span> GLOSSARY</span></h1>
+    <p class="docs-lead">Definitions for every advanced statistic used in the NBL historical stats database.</p>
+
+    <div class="glossary-search-wrap">
+      <span class="glossary-search-icon">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input type="search" class="glossary-search" id="glossary-search" placeholder="Search stats…" autocomplete="off">
+    </div>
+
+    <p class="stat-count" id="stat-count"><strong>21</strong> stats</p>
+
+    <div class="glossary-grid" id="glossary-grid"></div>
+
+    <div class="docs-page-nav">
+      <a href="/contracts-info.html" class="docs-page-btn prev">
+        <span class="docs-page-btn-label">← Previous</span>
+        <span class="docs-page-btn-title">Contract Types</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div>
+        <p class="footer-heading">Site Pages</p>
+        <div class="footer-links-row">
+          <a href="/" class="footer-link">Home</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts.html" class="footer-link">Contracts</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts-info.html" class="footer-link">Contract Types</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats.html" class="footer-link">Statistics</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats-info.html" class="footer-link">Stats Glossary</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Documentation</p>
+        <div class="footer-links-row">
+          <a href="/docs.html" class="footer-link">Overview</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts-info.html" class="footer-link">Contract Types</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats-info.html" class="footer-link">Stats Glossary</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Credits</p>
+        <div class="footer-links-row">
+          <a href="https://spatialjam.com/contracttracker" target="_blank" rel="noopener noreferrer" class="footer-link">SpatialJam</a>
+          <span class="footer-sep">·</span>
+          <a href="https://public.tableau.com/views/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages" target="_blank" rel="noopener noreferrer" class="footer-link">Tableau</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026-present NBLCAS. All Rights Reserved.</p>
+        <p>NBLCAS is not affiliated with the National Basketball League.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0.625rem;flex-shrink:0;">
+      <img src="/nblcas-logo.png" alt="NBLCAS" class="footer-logo">
+      <a href="https://github.com/rigrotto/nblcas" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/badge/View%20on%20GitHub-181717?style=flat&logo=github&logoColor=white" alt="View on GitHub">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const dsb = document.getElementById('dsb');
+  const toggle = document.getElementById('dsb-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => dsb.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!dsb.contains(e.target) && e.target !== toggle) dsb.classList.remove('open');
+    });
+  }
+
+  const STATS = [
+    { abbr: "AST%",   name: "Assist Percent",               desc: "An estimate of the percentage of teammate field goals a player assisted while on the floor." },
+    { abbr: "AST/TO", name: "Assist to Turnover Ratio",     desc: "The ratio of assists to turnovers — a higher number indicates a more efficient ball-handler." },
+    { abbr: "BLK%",   name: "Block Percent",                desc: "An estimate of the percentage of opponent two-point field goal attempts blocked by a player while on the floor." },
+    { abbr: "BOX",    name: "Box Plus/Minus",               desc: "A box-score-based estimate of the points per 100 possessions that a player contributed above a league-average player." },
+    { abbr: "dRAT",   name: "Defensive Rating",             desc: "An estimate of the number of points a team allows per 100 possessions while a player is on the floor." },
+    { abbr: "dREB%",  name: "Defensive Rebound Percent",    desc: "An estimate of the percentage of available defensive rebounds a player grabbed while on the floor." },
+    { abbr: "FTr",    name: "Free Throw Rate",              desc: "The ratio of free throw attempts to field goal attempts, indicating how often a player gets to the line." },
+    { abbr: "MIN",    name: "Minutes Played",               desc: "The total number of minutes a player has been on the court during the season." },
+    { abbr: "NetRAT", name: "Net Rating",                   desc: "The difference between a team's Offensive Rating and Defensive Rating while a player is on the floor, reflecting overall impact." },
+    { abbr: "oRAT",   name: "Offensive Rating",             desc: "An estimate of the number of points a team scores per 100 possessions while a player is on the floor." },
+    { abbr: "oREB%",  name: "Offensive Rebound Percent",    desc: "An estimate of the percentage of available offensive rebounds a player grabbed while on the floor." },
+    { abbr: "PACE",   name: "Pace (Possessions)",           desc: "The estimated number of possessions per 48 minutes while a player is on the floor, indicating the tempo of play." },
+    { abbr: "PER",    name: "Player Efficiency Rating",     desc: "A single-number summary of a player's per-minute productivity, standardised so that the league average is 15." },
+    { abbr: "PPS",    name: "Points Per Shot",              desc: "The average number of points scored per field goal attempt, factoring in two-pointers, three-pointers, and free throws." },
+    { abbr: "STL%",   name: "Steal Percent",                desc: "An estimate of the percentage of opponent possessions that end with a steal by this player while on the floor." },
+    { abbr: "TOV%",   name: "Turnover Percent",             desc: "An estimate of turnovers committed per 100 plays — lower is better for the player." },
+    { abbr: "tREB%",  name: "Total Rebound Percent",        desc: "An estimate of the percentage of all available rebounds (offensive and defensive) a player grabbed while on the floor." },
+    { abbr: "TS%",    name: "True Shooting Percent",        desc: "A measure of shooting efficiency that accounts for field goals, three-point field goals, and free throws." },
+    { abbr: "USG%",   name: "Usage Rate",                   desc: "An estimate of the percentage of team plays used by a player while on the floor, via field goal attempts, free throws, and turnovers." },
+    { abbr: "VORP",   name: "Value Over Replacement Player",desc: "Measures a player's total contribution relative to a replacement-level player, expressed as points per 100 team possessions." },
+    { abbr: "WS",     name: "Win Shares",                   desc: "An estimate of the number of wins a player contributed to their team, split into offensive and defensive components." },
+  ];
+
+  const grid    = document.getElementById('glossary-grid');
+  const counter = document.getElementById('stat-count');
+  const input   = document.getElementById('glossary-search');
+
+  function renderGrid(query) {
+    const q = query.toLowerCase().trim();
+    const filtered = q
+      ? STATS.filter(s =>
+          s.abbr.toLowerCase().includes(q) ||
+          s.name.toLowerCase().includes(q) ||
+          s.desc.toLowerCase().includes(q)
+        )
+      : STATS;
+
+    counter.innerHTML = `<strong>${filtered.length}</strong> stat${filtered.length !== 1 ? 's' : ''}`;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<p class="no-results">No stats match "<strong>${query}</strong>".</p>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map(s => `
+      <div class="stat-card">
+        <div class="stat-abbr">${s.abbr}</div>
+        <div class="stat-name">${s.name}</div>
+        <div class="stat-desc">${s.desc}</div>
+      </div>
+    `).join('');
+  }
+
+  renderGrid('');
+  input.addEventListener('input', e => renderGrid(e.target.value));
+</script>
+<script src="/nav.js?v=3"></script>
+</body>
+</html>

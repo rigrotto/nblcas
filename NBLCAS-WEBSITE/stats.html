@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Stats | NBLCAS</title>
+  <script>try{if(localStorage.getItem('nbl-theme')==='light')document.documentElement.classList.remove('dark');}catch(e){}</script>
+  <link rel="icon" type="image/png" href="/nblcas-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=3">
+  <style>
+    .nav-dropdown-menu{display:none!important;position:absolute!important;top:calc(100% + 4px);left:0;min-width:200px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.3125rem;z-index:200;flex-direction:column;box-shadow:0 8px 24px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.08)}
+    .nav-dropdown.open .nav-dropdown-menu{display:flex!important}
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" id="nav-root"></nav>
+
+<!-- Page header -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-top">
+      <div>
+        <span class="page-eyebrow">Australian Basketball</span>
+        <h1 class="page-title">NBL PLAYER<span style="color:var(--primary)"> STATS</span></h1>
+        <p class="page-subtitle">Historical player averages database. Powered by Tableau.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stats glossary link -->
+<div style="max-width:80rem;margin:0 auto;padding:0 1.5rem 0;display:flex;justify-content:flex-end;">
+  <a href="/stats-info.html" class="legend-info-link" style="margin-bottom:0.5rem;">
+    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    Stats glossary
+    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+</div>
+
+<!-- Tableau embed -->
+<div class="tableau-wrapper">
+  <div class="tableauPlaceholder" id="viz1775621299965" style="position:relative">
+    <noscript>
+      <a href="#">
+        <img alt="Player Averages" src="https://public.tableau.com/static/images/Hi/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages/1_rss.png" style="border:none">
+      </a>
+    </noscript>
+    <object class="tableauViz" style="display:none;">
+      <param name="host_url"             value="https%3A%2F%2Fpublic.tableau.com%2F">
+      <param name="embed_code_version"   value="3">
+      <param name="site_root"            value="">
+      <param name="name"                 value="HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages">
+      <param name="tabs"                 value="no">
+      <param name="toolbar"              value="yes">
+      <param name="static_image"         value="https://public.tableau.com/static/images/Hi/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages/1.png">
+      <param name="animate_transition"   value="yes">
+      <param name="display_static_image" value="yes">
+      <param name="display_spinner"      value="yes">
+      <param name="display_overlay"      value="yes">
+      <param name="display_count"        value="yes">
+      <param name="language"             value="en-GB">
+    </object>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div>
+        <p class="footer-heading">Site Pages</p>
+        <div class="footer-links-row">
+          <a href="/" class="footer-link">Home</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts.html" class="footer-link">Contracts</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts-info.html" class="footer-link">Contract Types</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats.html" class="footer-link">Statistics</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats-info.html" class="footer-link">Stats Glossary</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Documentation</p>
+        <div class="footer-links-row">
+          <a href="/docs.html" class="footer-link">Overview</a>
+          <span class="footer-sep">·</span>
+          <a href="/contracts-info.html" class="footer-link">Contract Types</a>
+          <span class="footer-sep">·</span>
+          <a href="/stats-info.html" class="footer-link">Stats Glossary</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Credits</p>
+        <div class="footer-links-row">
+          <a href="https://spatialjam.com/contracttracker" target="_blank" rel="noopener noreferrer" class="footer-link">SpatialJam</a>
+          <span class="footer-sep">·</span>
+          <a href="https://public.tableau.com/views/HistoricalStatsDatabaseNEWlocalCSV/PlayerAverages" target="_blank" rel="noopener noreferrer" class="footer-link">Tableau</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026-present NBLCAS. All Rights Reserved.</p>
+        <p>NBLCAS is not affiliated with the National Basketball League.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0.625rem;flex-shrink:0;">
+      <img src="/nblcas-logo.png" alt="NBLCAS" class="footer-logo">
+      <a href="https://github.com/rigrotto/nblcas" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/badge/View%20on%20GitHub-181717?style=flat&logo=github&logoColor=white" alt="View on GitHub">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tableau embed
+  (function() {
+    const container = document.getElementById('viz1775621299965');
+    if (!container) return;
+    const vizObj = container.getElementsByTagName('object')[0];
+    if (!vizObj) return;
+    vizObj.style.width  = '1300px';
+    vizObj.style.height = '1027px';
+    const script = document.createElement('script');
+    script.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizObj.parentNode.insertBefore(script, vizObj);
+  })();
+</script>
+<script src="/nav.js?v=3"></script>
+</body>
+</html>
