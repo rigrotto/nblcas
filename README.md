@@ -6,8 +6,8 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-F38020?style=flat&logo=cloudflare&logoColor=white)
-![Last Commit](https://img.shields.io/badge/Last%20Commit-April%202026-blue)
-![Release Name](https://img.shields.io/badge/Version%20GAZE1.1-red)
+![Last Commit](https://img.shields.io/badge/Last%20Commit-May%202026-blue)
+![Release Name](https://img.shields.io/badge/Version%1.3-red)
 
 ---
 
